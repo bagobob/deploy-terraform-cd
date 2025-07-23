@@ -23,8 +23,6 @@ jobs:
         aws-region: eu-west-1 # The AWS region for operations
     - name: Install terraform
       uses: hashicorp/setup-terraform@v3
-      with:
-        terraform_version: "1.12.1"
     - name: deploy terraform # Step to deploy using a custom script
       run: |
         terraform fmt
