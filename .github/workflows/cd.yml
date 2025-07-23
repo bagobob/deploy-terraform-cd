@@ -18,9 +18,13 @@ jobs:
     - name: Configure AWS credentials # Step to configure AWS credentials for AWS operations
       uses: aws-actions/configure-aws-credentials@v4 # specifies the action to use and version
       with:
-        audience: https://token.actions.githubusercontent.com # The audience for the AWS credentials
+        audience: sts.amazonaws.com # The audience for the AWS credentials
         role-to-assume: ${{secrets.AWS_IAM_ROLE}} # The AWS role ARN to assume from secrets
         aws-region: eu-west-1 # The AWS region for operations
+    - name: Install terraform
+      uses: hashicorp/setup-terraform@v3
+      with:
+        terraform_version: "1.12.1"
     - name: deploy terraform # Step to deploy using a custom script
       run: |
         terraform fmt
