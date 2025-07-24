@@ -54,6 +54,7 @@ module "cdn" {
   }
 
   web_acl_id = ""
+  tags = var.tags
 }
 
 resource "aws_cloudfront_origin_access_identity" "origin_s3" {
